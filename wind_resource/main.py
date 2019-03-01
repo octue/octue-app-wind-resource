@@ -16,7 +16,7 @@ def run_app():
         method='name_icontains',
         filter_value='lidar'
     )
-    print('There are ', len(lidar_data.files), 'files in the lidar dataset.')
+    print('There are ', len(lidar_data.files), 'files in the lidar dataset, yanhua.')
     print('There are ', len(met_mast_data.files), 'files in the met mast dataset.')
     scan_files = lidar_data.get_file_sequence(
         method='name_endswith',
@@ -28,3 +28,7 @@ def run_app():
     )
     print('There are', len(scan_files), ' scan files from the lidar, sorted sequentially')
     print('There are', len(mast_csv_files), ' csv files from the met mast, sorted in sequentially')
+
+
+
+    # yanhua
