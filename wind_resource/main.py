@@ -16,8 +16,6 @@ def run_app():
         method='name_icontains',
         filter_value='lidar'
     )
-    print('There are ', len(lidar_data.files), 'files in the lidar dataset.')
-    print('There are ', len(met_mast_data.files), 'files in the met mast dataset.')
     scan_files = lidar_data.get_file_sequence(
         method='name_endswith',
         filter_value='.scn'
@@ -26,5 +24,15 @@ def run_app():
         method='name_endswith',
         filter_value='.csv'
     )
+
+    # Print visual check that files are present and in order
+    print('There are ', len(lidar_data.files), 'files in the lidar dataset.')
+    print('There are ', len(met_mast_data.files), 'files in the met mast dataset.')
     print('There are', len(scan_files), ' scan files from the lidar, sorted sequentially')
-    print('There are', len(mast_csv_files), ' csv files from the met mast, sorted in sequentially')
+    print('There are', len(mast_csv_files), ' csv files from the met mast, sorted sequentially')
+
+    for file in mast_csv_files:
+        print('Met mast *.csv file: {}, {}, {}'.format(file.name, file.cluster, file.sequence))
+
+    for file in scan_files:
+        print('Lidar *.scn file: {}, {}, {}'.format(file.name, file.cluster, file.sequence))
