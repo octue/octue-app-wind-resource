@@ -22,6 +22,10 @@ plotly==3.6.1
 # A numerical manipulation library
 numpy==1.16.2
 
+# A data stores library
+pandas==0.24.2
+
+
 # A powerful database api library. Supply it with your db's uri (through environment variables - don't commit URIs to git!!!!) and read/add data to/from databases.
 # Note that results of analyses using externally managed databases as data sources cannot be guaranteed to be idempotent.
 #SQLAlchemy==1.0.12

@@ -1,5 +1,7 @@
-import numpy as np
 from octue import analysis
+
+from .met_mast_datastore import get_input_dataframe as get_mast_input_dataframe
+from .met_mast import met_mast_analysis
 
 
 def run_app():
@@ -31,11 +33,19 @@ def run_app():
     print('There are', len(scan_files), ' scan files from the lidar, sorted sequentially')
     print('There are', len(mast_csv_files), ' csv files from the met mast, sorted sequentially')
 
-    for file in mast_csv_files:
-        print('Met mast *.csv file: {}, {}, {}'.format(file.name, file.cluster, file.sequence))
+    # for file in mast_csv_files:
+    #     print('Met mast *.csv file: {}, {}, {}, {}'.format(file.name, file.cluster, file.sequence, file.extension))
+    #
+    # for file in scan_files:
+    #     print('Lidar *.scn file: {}, {}, {}'.format(file.name, file.cluster, file.sequence))
 
-    for file in scan_files:
-        print('Lidar *.scn file: {}, {}, {}'.format(file.name, file.cluster, file.sequence))
+    # Get the datastores here!
+    mast_input_dataframe = get_mast_input_dataframe(mast_csv_files)
+
+    # Run the met mast analysis:
+    met_mast_analysis(mast_input_dataframe)
+
+
 
 
 # function main()
